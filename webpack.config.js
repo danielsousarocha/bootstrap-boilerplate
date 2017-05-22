@@ -1,13 +1,16 @@
 var webpack = require('webpack');
 var path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+var isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
     entry: {
         scripts: './src/js/scripts.js'
     },
     output: {
-        path: path.resolve(__dirname, './public'),
+        path: path.resolve(__dirname, 'public'),
         filename: "[name].js"
     },
     module: {
@@ -25,6 +28,14 @@ module.exports = {
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery"
+        }),
+        new HtmlWebpackPlugin({
+            template: 'index.html',
+            filename: 'index.html',
+            hash: true,
+            minify: {
+                collapseWhitespace: isProduction
+            }
         }),
         new ExtractTextPlugin("styles.css")
     ]
