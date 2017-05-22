@@ -3,4 +3,4 @@ import '../scss/styles.scss';
 import $ from 'jquery';
 import 'bootstrap-sass';
 
-$('.page-header').text('App ready!');
+$('.page-header').text('Prepped and ready!');

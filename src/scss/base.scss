@@ -1,0 +1,7 @@
+$bgColor: #333;
+$fontColor: invert($bgColor);
+
+body {
+    background-color: $bgColor;
+    color: $fontColor;
+}
