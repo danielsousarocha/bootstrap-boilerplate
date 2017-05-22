@@ -2,6 +2,7 @@ var webpack = require('webpack');
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 var isProduction = process.env.NODE_ENV === 'production';
 
@@ -44,6 +45,9 @@ module.exports = {
                 collapseWhitespace: isProduction
             }
         }),
-        new ExtractTextPlugin("styles.css")
+        new ExtractTextPlugin("styles.css"),
+        new CopyWebpackPlugin([
+            { from: 'src/img/favicon', to: 'img/favicon' }
+        ])
     ]
 }
