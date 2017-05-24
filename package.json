@@ -5,7 +5,8 @@
   "main": "src/js/scripts.js",
   "scripts": {
     "dev": "webpack-dev-server",
-    "prod": "NODE_ENV='production' webpack -p"
+    "prod": "npm run clean && NODE_ENV='production' webpack -p",
+    "clean": "rimraf public"
   },
   "keywords": [],
   "author": "Daniel Sousa Rocha",
@@ -20,6 +21,7 @@
     "extract-text-webpack-plugin": "^2.1.0",
     "html-webpack-plugin": "^2.28.0",
     "node-sass": "^4.5.2",
+    "rimraf": "^2.6.1",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.17.0",
     "webpack": "^2.5.0",
