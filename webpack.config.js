@@ -1,9 +1,11 @@
 var webpack = require('webpack');
 var path = require('path');
+var glob = require('glob');
 
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var PurifyCSSPlugin = require('purifycss-webpack');
 
 var inProduction = process.env.NODE_ENV === 'production';
 
@@ -57,6 +59,10 @@ module.exports = {
             }
         }),
         new ExtractTextPlugin("styles.css"),
+        new PurifyCSSPlugin({
+            paths: glob.sync(path.join(__dirname, './*.html')),
+            minimize: inProduction
+        }),
         new CopyWebpackPlugin([
             { from: 'src/img/favicon', to: 'img/favicon' }
         ])
