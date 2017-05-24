@@ -32,13 +32,17 @@ module.exports = {
             {
                 test: /\.s[ac]ss$/,
                 use: cssConfig
+            },
+            {
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                use: ['file-loader?name=[path][name].[ext]']
             }
         ]
     },
     devServer: {
         contentBase: path.join(__dirname, "public"),
         compress: true,
-        port: 9000,
+        port: 8000,
         stats: "errors-only",
         open: true,
         hot: true
@@ -64,7 +68,7 @@ module.exports = {
             minimize: inProduction
         }),
         new CopyWebpackPlugin([
-            { from: 'src/img/favicon', to: 'img/favicon' }
+            { from: 'src/img', to: 'img' }
         ])
     ]
 }
